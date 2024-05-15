@@ -1,0 +1,32 @@
+body{
+  background-color: grey;
+  font-family: Arial;
+}
+
+.item-name{
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid white;
+}
+.organizer, .list-orginizer{
+  display: grid;
+  grid-template-columns: 27% 27% 27% 19%;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+}
+.organizer>div, .list-orginizer>div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.item-id{
+  font-size: 15px;
+}
+.list-orginizer{
+  
+}
