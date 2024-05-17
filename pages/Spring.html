@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="Styles/Branch.css">
+    <link rel="stylesheet" href="../Styles/Branch.css">
   </head>
   <body>
     <div class="header">
@@ -21,13 +21,15 @@
           used number
         </div>
         <div class="add">
-          <button class="add-button">
+          <button class="add-button" onclick="
+            rowNumber++;
+            addRow(rowNumber);">
             Add
           </button>
         </div>
       </div>
     </div>
-    <div class="list-orginizer">
+    <div class="list-organizer js-list-organizer">
       <div class="item-specification">
         spring
       </div>
@@ -38,11 +40,11 @@
         5
       </div>
       <div class="del-button">
-        <button>
+        <button onclick="removeRow()">
           del
         </button>
       </div>
     </div>
-	<script src="index.js"></script>
+	<script src="../Script/Branch.js"></script>
   </body>
 </html>

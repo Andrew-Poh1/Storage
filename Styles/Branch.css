@@ -11,14 +11,14 @@ body{
   padding: 10px;
   border-bottom: 1px solid white;
 }
-.organizer, .list-orginizer{
+.organizer, .list-organizer{
   display: grid;
   grid-template-columns: 27% 27% 27% 19%;
   background-color: black;
   color: white;
   margin-top: 20px;
 }
-.organizer>div, .list-orginizer>div{
+.organizer>div, .list-organizer>div{
   display: flex;
   justify-content: center;
   align-items: center;
