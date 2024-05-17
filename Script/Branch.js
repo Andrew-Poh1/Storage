@@ -1,24 +1,7 @@
 let rowNumber = 0;
 //new rowNumber everytime the add button is pressed
 let ListOfObjects = {
-  row1:{
-    name: '<div>Spring1</div>',
-    amount: '<div>4</div>',
-    used: '<div>5</div>',
-    button: '<div><button>del</button></div>'
-  },
-  row2:{
-    name: '<div>Spring2</div>',
-    amount: '<div>4</div>',
-    used: '<div>5</div>',
-    button: '<div><button>del</button></div>'
-  },
-  row3:{
-    name: '<div>Spring3</div>',
-    amount: '<div>4</div>',
-    used: '<div>5</div>',
-    button: '<div><button>del</button></div>'
-  }
+  
 }
 //computer keeps track of the list on the page.
 
