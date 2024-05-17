@@ -81,7 +81,7 @@ function AddRow(rowNumber){
   ListOfObjects[rowIndex]['name'] = '<div>add item</div>';
   ListOfObjects[rowIndex]['amount'] = '<div>amount in stock</div>';
   ListOfObjects[rowIndex]['used'] = '<div>amount used?</div>';
-  ListOfObjects[rowIndex]['button'] = '<div><button>del</button></div>';
+  ListOfObjects[rowIndex]['button'] = `<div><button onclick = "deleteRow(${rowNumber})">del</button></div>`;
   //creating the row object, then adding all the things to that row number where after the user could change the 
 
   renderHTML();
@@ -89,6 +89,23 @@ function AddRow(rowNumber){
 
 }
 
+function deleteRow(rowNumber){
+  //so we know that as soon as the delete button is pressed, we want the row object name a we want to get rid of it. first step it to obtain row number of delete button.
+  rowIndex = 'row' + rowNumber;
 
+  ListOfObjects[rowIndex]['name'] = '';
+  ListOfObjects[rowIndex]['amount'] = '';
+  ListOfObjects[rowIndex]['used'] = '';
+  ListOfObjects[rowIndex]['button'] = '';
+  // *old code* delete ListOfObjects[rowIndex];
+  //since the row number will be in each delete button i decided to make the object name, be accessed by every delete button. 
+  console.log(ListOfObjects);
+  renderHTML();
+  //after I remove it I want the new list to be rendered
+
+  //** whenever I remove a row it ruins the count of the render list example if I have three rows. and i delete row two. we still got rowIndex 'row1' and rowindex 'row3' when the render function runs it will have a list of rows[i] matching the length of the object in objectLists. so row1 will be equaled to row1, but row three will be equal to row2 and it wont be able to render since row 2 does not exist. to fix this instead of deleting the object, I will just make each of their attributes just be an empty string so that when they are added to the html its just empty space.** 
+
+  //this works greatly but the list will be very long if used for a long enough time. not something I particulary worry about but some room for improvement, as of now it works.
+}
 
 
