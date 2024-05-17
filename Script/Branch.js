@@ -130,19 +130,28 @@ let amount = 'amount';
 let used = 'used';
 //SO apparently elementAttributeName is a variable upon passing it thorugh html and into an onkeyup function. so to turn them back to a string I just made their variable names into their string names. since I want to use their string name to access the ListOfObjects however all of them work except name, not so sure as to why and I have spent much time searching why elemenyattribute is name it just gives me an empty string, so as we could see the function below as it recives the name variable via the input buttons function onkeyup, I check if the string is emtpy and hard code the elementAttributeName to just simply be 'name' which works fairly well, but it eats me up inside not knowing why something is happening, like why only the variable name comes up with an empty string. Welp that's coding.
 function checkEnter(rowNumber, elementAttributeName){
-
+  //first got to get change the name into 'name' for some reason
+  console.log(elementAttributeName)
   if (elementAttributeName === ''){
     elementAttributeName = 'name';
   }
   rowIndex = 'row' + rowNumber;
   input = document.querySelector(`.js-input-${rowIndex}-${elementAttributeName}`).value;
-  //getting the input value
+  // getting input value
 
-  ListOfObjects[rowIndex][elementAttributeName] =`<div>${input}</div>`;
-  //putting input value in between divs and adding it to back to the objectList
-
-  renderHTML();
-  //updating user interface / list
+  //each div needs to be replaced exactly as it was before so i did that to be able to edit the div again.
+  if (elementAttributeName === 'name'){
+    ListOfObjects[rowIndex][elementAttributeName] =`<div onclick = "editHTML('name',${rowNumber})">${input}</div>`;
+    renderHTML();
+  }
+  else if(elementAttributeName === 'amount'){
+    ListOfObjects[rowIndex][elementAttributeName] = `<div  onclick = "editHTML('amount',${rowNumber})">${input}</div>`;
+    renderHTML();
+  }
+  else if(elementAttributeName === 'used'){
+    ListOfObjects[rowIndex][elementAttributeName] = `<div  onclick = "editHTML('used',${rowNumber})">${input}</div>`;
+    renderHTML();
+  }
 }
 
 
