@@ -78,9 +78,9 @@ function AddRow(rowNumber){
     button: ''
   };
 
-  ListOfObjects[rowIndex]['name'] = '<div>add item</div>';
-  ListOfObjects[rowIndex]['amount'] = '<div>amount in stock</div>';
-  ListOfObjects[rowIndex]['used'] = '<div>amount used?</div>';
+  ListOfObjects[rowIndex]['name'] = `<div onclick = "editHTML('name',${rowNumber})">add item</div>`;
+  ListOfObjects[rowIndex]['amount'] = `<div  onclick = "editHTML('amount',${rowNumber})">amount in stock</div>`;
+  ListOfObjects[rowIndex]['used'] = `<div onclick = "editHTML('used', ${rowNumber})">amount used?</div>`;
   ListOfObjects[rowIndex]['button'] = `<div><button onclick = "deleteRow(${rowNumber})">del</button></div>`;
   //creating the row object, then adding all the things to that row number where after the user could change the 
 
@@ -107,5 +107,44 @@ function deleteRow(rowNumber){
 
   //this works greatly but the list will be very long if used for a long enough time. not something I particulary worry about but some room for improvement, as of now it works.
 }
+
+
+function editHTML(elementAttributeName, rowNumber){
+  //whenever the user touches the div of any row i want them to be able to edit it. so I will pass through the class of an element and edit it from there on click. now as for every div having this function I just need to add it to the AddRow function.
+
+  // this only changes the first element since they all equaled to the same class name. I have updated the AddRow function such that on click the div elements come with the row number and object attribute now I could access the element from the object list instead of the document query selector
+  // old code element = document.querySelector(`.${elementName}`).innerHTML = 'test';
+
+  rowIndex = 'row' + rowNumber;
+
+  ListOfObjects[rowIndex][elementAttributeName] = `<input class = "js-input-${rowIndex}-${elementAttributeName}" placeholder = "enter a value" onkeyup = "
+  if (event.key === 'Enter'){
+    checkEnter(${rowNumber},${elementAttributeName});
+  }
+  "></input>`;
+  //much has been thought about since last comment. everytime a div is clicked, the rowNumber is given, but also its attribute, so I could edit is specifically. example I click row3 - name then it will make it an input value. now that inputvalue has to have a specific name, so that when i get its value I could get it to change the value at where its at. so the input is in the same spot I want the value of the input to be so I just gave the name to every input box 'js-input-${rowIndex(which is row number)}${element attribute name} now to get that specific input i just use need to type js-input with its corresponding row and element name. Now when the user clicks enter, it will get the value of that specific input and put it into the div that corresponds to it. I hope that makes sense.
+
+  renderHTML();
+}
+let amount = 'amount';
+let used = 'used';
+//SO apparently elementAttributeName is a variable upon passing it thorugh html and into an onkeyup function. so to turn them back to a string I just made their variable names into their string names. since I want to use their string name to access the ListOfObjects however all of them work except name, not so sure as to why and I have spent much time searching why elemenyattribute is name it just gives me an empty string, so as we could see the function below as it recives the name variable via the input buttons function onkeyup, I check if the string is emtpy and hard code the elementAttributeName to just simply be 'name' which works fairly well, but it eats me up inside not knowing why something is happening, like why only the variable name comes up with an empty string. Welp that's coding.
+function checkEnter(rowNumber, elementAttributeName){
+
+  if (elementAttributeName === ''){
+    elementAttributeName = 'name';
+  }
+  rowIndex = 'row' + rowNumber;
+  input = document.querySelector(`.js-input-${rowIndex}-${elementAttributeName}`).value;
+  //getting the input value
+
+  ListOfObjects[rowIndex][elementAttributeName] =`<div>${input}</div>`;
+  //putting input value in between divs and adding it to back to the objectList
+
+  renderHTML();
+  //updating user interface / list
+}
+
+
 
 
